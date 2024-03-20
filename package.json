@@ -1,0 +1,16 @@
+{
+  "name": "ev-charge-time",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --watch index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typed-html": "^3.0.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {}
+}
