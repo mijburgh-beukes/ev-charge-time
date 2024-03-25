@@ -1,5 +1,4 @@
 import { Hono } from "hono";
-import { html } from "hono/html";
 import * as elements from "typed-html";
 
 const app = new Hono();
@@ -7,9 +6,10 @@ app
   .get("/", (c) =>
     c.html(
       <BaseHtml>
-        <button hx-post="/clicked" hx-swap="outerHTML">
+        {/* <button hx-post="/clicked" hx-swap="outerHTML">
           Click me
-        </button>
+        </button> */}
+        <Select {...selectManufacturer} />
       </BaseHtml>
     )
   )
@@ -21,17 +21,23 @@ interface SelectProps {
   name: string;
   id: string;
   options: string[];
+  className?: string;
 }
 
 const selectManufacturer: SelectProps = {
   name: "manufacturer",
-  id: crypto.randomUUID().toString(),
+  id: "mf-select",
   options: ["nissan", "tesla", "bmw", "audi"],
 };
 
-function Select({ name, id, options }: SelectProps) {
+function Select(props: SelectProps) {
+  const { name, id, options, className = "" } = props;
   return (
-    <select name={name} id={id} class="border rounded-md capitalize">
+    <select
+      name={name}
+      id={id}
+      class={`${className} border-b-2 border-x-0 border-t-0 border-slate-200 capitalize  focus:ring-0 focus:ring-transparent focus:border-slate-200 hover:shadow-lg transition-shadow`}
+    >
       <option value="">--{name}--</option>
       {options.map((option) => (
         <option value={option}>{option}</option>
