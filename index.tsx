@@ -13,11 +13,32 @@ app
       </BaseHtml>
     )
   )
-  .post("/clicked", (c) =>
-    c.html(<div class="text-blue-600">I'm from the server!</div>)
-  );
+  .post("/clicked", (c) => c.html(Select(selectManufacturer)));
 
 export default app;
+
+interface SelectProps {
+  name: string;
+  id: string;
+  options: string[];
+}
+
+const selectManufacturer: SelectProps = {
+  name: "manufacturer",
+  id: crypto.randomUUID().toString(),
+  options: ["nissan", "tesla", "bmw", "audi"],
+};
+
+function Select({ name, id, options }: SelectProps) {
+  return (
+    <select name={name} id={id} class="border rounded-md capitalize">
+      <option value="">--{name}--</option>
+      {options.map((option) => (
+        <option value={option}>{option}</option>
+      ))}
+    </select>
+  );
+}
 
 // const server = Bun.serve({
 //   hostname: "localhost",
@@ -49,7 +70,7 @@ const BaseHtml = ({ children }: elements.Children) => `<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://unpkg.com/htmx.org@1.9.11" integrity="sha384-0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0" crossorigin="anonymous"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
   <title>EV Charge Time</title>
 </head>
 <body class="flex w-full h-screen justify-center items-center">
