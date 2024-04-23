@@ -1,0 +1,15 @@
+.ibm-plex-sans-light {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.ibm-plex-sans-semibold {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+html {
+  font-family: "IBM PLex Sans";
+}
