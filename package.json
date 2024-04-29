@@ -1,7 +1,7 @@
 {
   "name": "ev-charge-time",
-  "module": "index.ts",
   "type": "module",
+  "module": "index.tsx",
   "scripts": {
     "dev": "bun run --watch index.tsx"
   },
